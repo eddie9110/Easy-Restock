@@ -6,3 +6,4 @@ router.post('/login', retailerLogin)
 router.post('/updateprofile', retailerUpdateProfile)
 router.get('/orderhistory', retailerOrderHistory)
 
+model.exports = router;
