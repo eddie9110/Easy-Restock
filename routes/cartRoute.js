@@ -1,10 +1,8 @@
-const express = require('express')
-const router = express.Router();
-// const Auth = require("../middleware/authMiddleware")
-const { orderhistory, checkout } = require('../controller/ordersController.js')
+const router = require('express').Router();
+const { getCart, addToCart, deleteItemFromCart } = require('../controller/cartController.js')
 
-router.get('/history', orderhistory)
-router.post('/checkout', checkout)
-
+router.get('/', getCart)
+router.post('/addtocart', addToCart) // utilise query parameters /:productId instead of req.body
+// router.delete('/deleteitem', deleteItemFromCart)
 
 module.exports = router;
