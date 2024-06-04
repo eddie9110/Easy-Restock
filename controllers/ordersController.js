@@ -5,15 +5,15 @@ const Wholesaler = require("../models/wholesalerModel")
 // const mpesa = require("../mobileCheckout.js")
 
 const orderhistory = async (req, res) => {
-    const retailer = req.user._id;
+    const retailer = req.retailer._id;
     try {
         const order = await Order.find({ retailer: retailer })
         if(order) {
-            return res.status(200).send(order)
+            return res.status(200).json(order)
         }
-        res.status(404).send('No orders found')
+        res.status(404).json("You have no order history")
     } catch (error) {
-        res.status(500).send()
+        res.status(500).send(error)
     }
 }
 
