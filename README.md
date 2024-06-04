@@ -27,8 +27,8 @@ This project could also benefit wholesalers by having access to a large pool of 
 
 
 ## Features
-Json Web Token Authentication
-Adding products to cart functionality
+- Json Web Token Authentication for routes
+- Adding products to cart functionality
 
 
 
@@ -38,7 +38,7 @@ Adding products to cart functionality
   -	Sign up
   -	Login
   -	Update their Profile
-  -	Search for a product by its name or category
+  -	Search for a product by its name or category**
   -	Add a product to cart
   - Create an order - *Pending checkout feature using mobile money
   -	Check the order history
@@ -57,4 +57,4 @@ Adding products to cart functionality
   -	Logout
 
 
-****To use the text search functionality, create an index with the key of a field you want to search and its value as “text”. E.g.   “db.Products.createIndex({productName: “text”})”
+**To use the text search functionality, create an index with the key of a field you want to search and its value as “text”. E.g.   “db.Products.createIndex({productName: “text”})”
