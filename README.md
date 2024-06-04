@@ -53,7 +53,7 @@ This project could also benefit wholesalers by having access to a large pool of 
   -	View their product listings
   -	Update a product listing
   -	Delete a product listing
-  -	Get pending orders – filter according to date of order
+  -	Get pending orders
   -	Logout
 
 
