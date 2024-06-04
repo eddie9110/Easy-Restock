@@ -25,9 +25,7 @@ This project could also benefit wholesalers by having access to a large pool of 
 
 git clone https://github.com/eddie9110/Easy-Restock.git
 
-    Install dependencies present in the package.json file:
-
-Npm install
+    Install dependencies present in the package.json file: run Npm install
 
     Clone the repository:
 
