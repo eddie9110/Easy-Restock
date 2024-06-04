@@ -20,10 +20,27 @@ This project could also benefit wholesalers by having access to a large pool of 
 
 
 ## Getting started
-1.	Clone repository
-2.	Npm install to get all the dependencies listed in the package.json file
-3.	Create a .env file to store sensitive info like api keys for the M-pesa Daraja Api checkout
-4.	Npm run app to run the api
+
+    Clone the repository:
+
+git clone https://github.com/eddie9110/Easy-Restock.git
+
+    Install dependencies present in the package.json file:
+
+Npm install
+
+    Clone the repository:
+
+git clone https://github.com/GoodnessJames/fastapi.git
+
+    Create a .env file to store your json web token secret keys:
+
+JWT_SECRET = <your generated secret key>
+
+    Run the server:
+
+Npm run app to run the api
+
 
 
 ## Features
