@@ -11,11 +11,11 @@ This project could also benefit wholesalers by having access to a large pool of 
   -	MongoDB Database
 
 ## Api Structure
-  -	Models - contains
-  -	Controller
-  -	Routes
-  -	Middleware
-  -	App.js
+  -	Models - contains the layout of database entries
+  -	Controller - contains controller functions
+  -	Routes - contains the routes for different controller functions
+  -	Middleware - contains the route authorisation middleware
+  -	App.js - contains an instance of express app
   -	Package.json – contains the project’s dependencies
 
 
