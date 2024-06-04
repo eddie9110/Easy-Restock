@@ -51,7 +51,7 @@ git clone https://github.com/eddie9110/Easy-Restock.git
 ### Retailers
   -	Sign up - POST /api/retailers/signup
   -	Login - POST /api/retailers/login
-  -	Update their Profile - POST /api/retailers/updateprofile (In the request body, include the product field you want to update e.g. quantity, product name, e.t.c)
+  -	Update their Profile - PUT /api/retailers/updateprofile (In the request body, include the product field you want to update e.g. quantity, product name, e.t.c)
   -	Search for a product by its name or category** - POST /api/products/search?query=<"your_query">&page=<"page_you_want">
   -	Add a product to cart - POST /api/cart/addtocart (In the request body, indicate include the productId & quantity of items needed)
   - Create an order - *Pending checkout feature using mobile money GET /api/orders/
@@ -60,14 +60,14 @@ git clone https://github.com/eddie9110/Easy-Restock.git
 
 
 ### Wholesalers
-  -	Sign up 
-  -	Login
-  -	Update their Profile
-  -	Create a product listing
-  -	View their product listings
-  -	Update a product listing
-  -	Delete a product listing
-  -	Get pending orders - GET api/wholesalers/
+  -	Sign up - POST /api/wholesalers/signup
+  -	Login - POST /api/wholesalers/login
+  -	Update their Profile - PUT /api/wholesalers/updateprofile
+  -	Create a product listing - POST /api/products/
+  -	View their product listings - GET /api/products/
+  -	Update a product listing - PUT /api/products/:product_id
+  -	Delete a product listing - DELETE api/products/:product_id
+  -	Get pending orders - GET api/wholesalers/pendingorders
   -	Logout - POST api/wholesaler/logout
 
 
