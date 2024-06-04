@@ -54,7 +54,7 @@ git clone https://github.com/eddie9110/Easy-Restock.git
   -	Update their Profile - PUT /api/retailers/updateprofile (In the request body, include the product field you want to update e.g. quantity, product name, e.t.c)
   -	Search for a product by its name or category** - POST /api/products/search?query=<"your_query">&page=<"page_you_want">
   -	Add a product to cart - POST /api/cart/addtocart (In the request body, indicate include the productId & quantity of items needed)
-  - Create an order - *Pending checkout feature using mobile money GET /api/orders/
+  - Create an order - GET /api/orders/checkout  - *Pending checkout feature using mobile money
   -	Check the order history - GET api/orders/orderhistory/
   -	Logout - POST api/retailer/logout
 
