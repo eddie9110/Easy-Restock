@@ -24,6 +24,22 @@ const getProduct = async (req, res) => {
     }
 };
 
+const searchProduct = async (req, res) => {
+    const searchQuery = req.query.query
+
+    try {
+        const products = await Product.find({$text: {$search: searchQuery}})
+        if (products) {
+            return res.status(200).json(products)
+        }
+        else {
+            return res.status(404).send("product not found")
+        }
+    } catch (error) {
+        res.status(500).json(error)
+    }
+};
+
 // for wholesalers only Creating a product listing
 const createtProductListing = async (req, res) => {
     if(isSeller) {
@@ -90,5 +106,6 @@ module.exports = {
     getProduct,
     createtProductListing,
     putProduct,
-    deleteProduct
+    deleteProduct,
+    searchProduct
 }
