@@ -31,15 +31,11 @@ Npm install
 
     Clone the repository:
 
-git clone https://github.com/GoodnessJames/fastapi.git
+    Create a .env file to store your json web token secret keys: e.g. JWT_SECRET = <"your generated secret key">
 
-    Create a .env file to store your json web token secret keys:
+    Run the server: Npm run app
 
-JWT_SECRET = <your generated secret key>
 
-    Run the server:
-
-Npm run app to run the api
 
 
 
@@ -50,28 +46,31 @@ Npm run app to run the api
 
 
 
-## End Points
+## Api End Points
+- To use some end-points, you have to be logged in so as to get a json web token that you can place in your api client headers with the key: Authorization and value: Bearer <"your assigned web token">
+- A demo video of the api end points in use is coming soon
+
 ### Retailers
-  -	Sign up
-  -	Login
-  -	Update their Profile
-  -	Search for a product by its name or category**
-  -	Add a product to cart
-  - Create an order - *Pending checkout feature using mobile money
-  -	Check the order history
-  -	Logout
+  -	Sign up - POST /api/retailers/signup
+  -	Login - POST /api/retailers/login
+  -	Update their Profile - POST /api/retailers/updateprofile (In the request body, include the product field you want to update e.g. quantity, product name, e.t.c)
+  -	Search for a product by its name or category** - POST /api/products/search?query=<"your_query">&page=<"page_you_want">
+  -	Add a product to cart - POST /api/cart/addtocart (In the request body, indicate include the productId & quantity of items needed)
+  - Create an order - *Pending checkout feature using mobile money GET /api/orders/
+  -	Check the order history - GET api/orders/orderhistory/
+  -	Logout - POST api/retailer/logout
 
 
 ### Wholesalers
-  -	Sign up
+  -	Sign up 
   -	Login
   -	Update their Profile
   -	Create a product listing
   -	View their product listings
   -	Update a product listing
   -	Delete a product listing
-  -	Get pending orders
-  -	Logout
+  -	Get pending orders - GET api/wholesalers/
+  -	Logout - POST api/wholesaler/logout
 
 
 **To use the text search functionality, create an index with the key of a field you want to search and its value as “text”. E.g.   “db.Products.createIndex({productName: “text”})”
