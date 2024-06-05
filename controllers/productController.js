@@ -26,11 +26,14 @@ const getProduct = async (req, res) => {
 
 const searchProduct = async (req, res) => {
     const searchQuery = req.query.query
+    const page = req.query.page ? req.query.page:1
+    const limit = 20
 
     try {
         const products = await Product.find({$text: {$search: searchQuery}})
         if (products) {
-            return res.status(200).json(products)
+            const paginatedProducts = products.slice((page - 1) * limit, page * limit)
+            return res.status(200).json(paginatedProducts)
         }
         else {
             return res.status(404).send("product not found")
