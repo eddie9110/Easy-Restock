@@ -49,8 +49,27 @@ git clone https://github.com/eddie9110/Easy-Restock.git
 - A demo video of the api end points in use is coming soon
 
 ### Retailers
+
   -	Sign up - POST /api/retailers/signup
+	The sign up information is passed in the request body in JSON format as follows:
+	{
+	  "retailerName": "good kiosk",
+	  "email": "good.kiosk@email.com",
+	  "password": "password",
+	  "location": "Nairobi",
+	  "phoneNumber": "2540111111",
+	  "address": "Nairobi"
+}
+
   -	Login - POST /api/retailers/login
+	o	The sign login information is passed in the request body in JSON format as follows:
+	{
+	  "email": "good.kiosk@email.com",
+	  "password": "password"
+  }
+
+
+  -	
   -	Update their Profile - PUT /api/retailers/updateprofile (In the request body, include the product field you want to update e.g. quantity, product name, e.t.c)
   -	Search for a product by its name or category** - POST /api/products/search?query=<"your_query">&page=<"page_you_want">
   -	Add a product to cart - POST /api/cart/addtocart (In the request body, indicate include the productId & quantity of items needed)
