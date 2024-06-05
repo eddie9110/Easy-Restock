@@ -20,22 +20,19 @@ const orderhistory = async (req, res) => {
 // retailers checkout
 const checkout = async(req, res) => {
     try {
-        const retailerId = req.body.retailer // req.retailer._id; // sent by middleware
+        const retailerId = req.retailer.id
         const retailer = await Retailer.findOne({ _id: retailerId });
         const retailerPhoneNumber = retailer.phoneNumber;
         let cart = await Cart.findOne({retailer})
         if(cart) {
-            // extract wholesalersids that have orders
+            // extract wholesalerids that have orders
             const wholesalerIds = new Set()
             cart.products.forEach(foundCallBack) // 
             function foundCallBack(orderInCart) {
                 const { wholesalerId } = (orderInCart)
                 wholesalerIds.add(wholesalerId)
             }
-
-            // console.log(wholesalerIds)
-            // console.log(productsInCart)
-          
+            let orders = []
             for (let wholesalerId of wholesalerIds) {
                 const salesPerShop = cart.products.filter(element => element.wholesalerId == wholesalerId)
                 console.log(salesPerShop);
@@ -47,26 +44,21 @@ const checkout = async(req, res) => {
                 const paybillNumber = wholesaler.payBillNumber;
                 // charge customer per shop
                 // await payment to complete even if failed, proceed to other shops
-
-                // create
-                if(true) { // if payment was successful
-                    const order = await Order.create({ // create pending order in every wholesaler's page after successful payment confirmation  await promise while paying, chaining then, promise.all()
-                        // transaction Id
-                        wholesalerId,
-                        wholesalerName: wholesaler.wholesalerName,
-                        retailerId,
-                        retailerPhoneNumber,
-                        products: salesPerShop,
-                        cost: costPerShop,
-                        address: req.body.address
-                    })
-                    const cartData = await Cart.findByIdAndDelete({_id: cart.id}) //delete entire / part or update and then delete
-                    // try without return followed by deleted the cart
-                    res.end("Payment was successful. Your order is being processed.")
-                } else {
-                    return res.status(400).send("Payment was not successful!")
-                }
+                // payment logic goes before this line
+                const order = await Order.create({ // create pending order in every wholesaler's page after successful payment confirmation  await promise while paying, chaining then, promise.all()
+                    // transaction Id
+                    wholesalerId,
+                    wholesalerName: wholesaler.wholesalerName,
+                    retailerId,
+                    retailerPhoneNumber,
+                    products: salesPerShop,
+                    cost: costPerShop,
+                    address: req.body.address
+                })
+                orders.push(order)
             }
+            res.status(200).send(orders)
+            const cartData = await Cart.findByIdAndDelete({_id: cart.id})
         } else {
             res.status(400).send("No cart was found")
         }
