@@ -50,29 +50,41 @@ git clone https://github.com/eddie9110/Easy-Restock.git
 
 ### Retailers
 
-  -	Sign up - POST /api/retailers/signup
-	The sign up information is passed in the request body in JSON format as follows:
-	{
+- Sign up - POST /api/retailers/signup
+	- The sign up information is passed in the request body in JSON format as follows:
+	- {
 	  "retailerName": "good kiosk",
 	  "email": "good.kiosk@email.com",
 	  "password": "password",
 	  "location": "Nairobi",
 	  "phoneNumber": "2540111111",
 	  "address": "Nairobi"
-}
-
-  -	Login - POST /api/retailers/login
-	o	The sign login information is passed in the request body in JSON format as follows:
+   }
+----
+- Login - POST /api/retailers/login
+- The  login information is passed in the request body in JSON format as follows:
 	{
 	  "email": "good.kiosk@email.com",
 	  "password": "password"
   }
-
-
-  -	
+--- 
   -	Update their Profile - PUT /api/retailers/updateprofile (In the request body, include the product field you want to update e.g. quantity, product name, e.t.c)
+    - In the request body, include the product field you want to update e.g. quantity, product name, e.t.c as shown)
+	- {
+	  "retailername": "Gooday general shop",
+	  "password": "password"
+    	}
+
+---
   -	Search for a product by its name or category** - POST /api/products/search?query=<"your_query">&page=<"page_you_want">
+***
   -	Add a product to cart - POST /api/cart/addtocart (In the request body, indicate include the productId & quantity of items needed)
+  -		The product id of the product to be added to cart is sent in the request body in json format alongside the quantity desired as shown bellow:
+		{
+		  "productId": "6652395fa3eb851a3493b213",
+		  "quantity": 10
+		}
+***
   - Create an order - GET /api/orders/checkout  - *Pending checkout feature using mobile money
   -	Check the order history - GET api/orders/orderhistory/
   -	Logout - POST api/retailer/logout
